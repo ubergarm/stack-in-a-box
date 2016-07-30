@@ -1,0 +1,19 @@
+version: '2'
+services:
+    rdb:
+        image: rethinkdb
+        ports:
+            - "8080"
+            - "28015"
+            - "29015"
+    caddy:
+        build:
+            context: .
+            dockerfile: Dockerfile.caddy
+        image: ubergarm/caddy
+        volumes:
+            - ./html:/html
+            - ./Caddyfile:/caddy/Caddyfile
+        ports:
+            - "0.0.0.0:80:80"
+            - "0.0.0.0:443:443"
