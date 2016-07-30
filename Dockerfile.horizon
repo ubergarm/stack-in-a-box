@@ -1,0 +1,8 @@
+FROM mhart/alpine-node
+
+RUN apk add --no-cache git
+RUN npm install -g horizon
+
+WORKDIR /app
+
+ENTRYPOINT ["/usr/bin/hz"]

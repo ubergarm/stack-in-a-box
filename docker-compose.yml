@@ -1,0 +1,47 @@
+version: '2'
+services:
+    rdb:
+        image: rethinkdb
+        ports:
+            - "8080"
+            - "28015"
+            - "29015"
+    horizon:
+        build:
+            context: .
+            dockerfile: Dockerfile.horizon
+        image: ubergarm/horizon
+        volumes:
+            - ./realtime:/app
+        command: serve --dev --allow-anonymous --connect rdb:28015 --bind 0.0.0.0
+        links:
+            - "rdb"
+        ports:
+            - "8181"
+        depends_on:
+            - rdb
+    express:
+        image: ubergarm/horizon
+        volumes:
+            - ./rest:/app
+        entrypoint: node
+        command: app.js
+        links:
+            - "horizon"
+        ports:
+            - "3000"
+        depends_on:
+            - horizon
+    caddy:
+        build:
+            context: .
+            dockerfile: Dockerfile.caddy
+        image: ubergarm/caddy
+        volumes:
+            - ./html:/html
+            - ./Caddyfile:/caddy/Caddyfile
+            # TODO
+            # map `.caddy` to save ACME certs
+        ports:
+            - "0.0.0.0:80:80"
+            - "0.0.0.0:443:443"

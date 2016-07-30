@@ -1,0 +1,21 @@
+{
+  "name": "rest",
+  "version": "1.0.0",
+  "description": "RESTful wrapper around Horizon RethinkDB client.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "rest",
+    "horizon",
+    "rethinkdb"
+  ],
+  "author": "John W. Leimgruber III",
+  "license": "MIT",
+  "dependencies": {
+    "@horizon/client": "^1.1.3",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0"
+  }
+}

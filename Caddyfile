@@ -1,0 +1,31 @@
+http://localhost {
+    gzip
+
+    root /html
+
+    redir /admin /admin/ 307
+    proxy /admin rdb:8080 {
+        without /admin
+        transparent
+        fail_timeout 0
+        max_fails 0
+    }
+
+    proxy /messages express:3000 {
+        websocket
+        transparent
+        fail_timeout 0
+        max_fails 0
+    }
+
+    proxy / horizon:8181 {
+       except /static /admin
+       websocket
+       transparent
+       fail_timeout 0
+       max_fails 0
+    }
+
+    log stdout
+    errors stderr
+}

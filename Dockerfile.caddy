@@ -1,0 +1,17 @@
+FROM alpine:3.4
+
+# Default to UTF-8 file.encoding
+ENV LANG C.UTF-8
+
+RUN set -x && \
+    apk add --no-cache \
+              curl \
+    && mkdir -p /caddy  && cd /caddy \
+    && curl -k -L -o caddy_linux_amd64.tar.gz "https://github.com/mholt/caddy/releases/download/v0.9.0/caddy_linux_amd64.tar.gz" \
+    && tar -xzf caddy_linux_amd64.tar.gz \
+    && rm -f caddy_linux_amd64.tar.gz \
+    && mkdir -p /html
+
+WORKDIR /caddy
+
+ENTRYPOINT ["/caddy/caddy_linux_amd64", "-agree"]
