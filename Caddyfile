@@ -3,14 +3,10 @@ http://localhost {
 }
 
 https://localhost {
-    gzip
-
     root /html
 
     proxy /admin rdb:8080 {
         without /admin
-        fail_timeout 0
-        max_fails 0
     }
 
     log stdout
