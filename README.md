@@ -10,6 +10,8 @@ This stack is built on:
 
 The jury is still out, but some sort of `feathers-horizon` [6](http://feathersjs.com/) may be more complete solution. Though it doesn't exist currently.
 
+This project is a proof of concept based on [this Horizon issue](https://github.com/rethinkdb/horizon/pull/507#issuecomment-234624156)
+
 ## Requirements
 
 * `docker`
