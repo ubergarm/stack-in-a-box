@@ -17,6 +17,7 @@ This project is a proof of concept based on [this Horizon issue](https://github.
 
 1. A `feathers-horizon` [6](http://feathersjs.com/) might do the trick if someone writes it.
 2. Can [Redux](https://github.com/shanecav/horizon-redux) provide Horizon across multiple transports?
+3. [Horizon Plugins](https://github.com/rethinkdb/horizon/pull/588)?
 
 #### This still leaves other questions like:
 
