@@ -23,6 +23,7 @@ This project is a proof of concept based on [this Horizon issue](https://github.
 1. Should my async tasks access the database directly through ReQL?
 2. Can I rely on change-feeds and ditch message queues?
 3. If I `dog-food` my APIs then I can never use ReQL and that stinks...
+4. What about HTTP/2 SSE transports?
 
 ## Requirements
 
