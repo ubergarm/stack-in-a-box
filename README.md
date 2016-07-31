@@ -8,9 +8,21 @@ This stack is built on:
 * Express [4](https://expressjs.com/) - add REST endpoints through Horizon client on server side
 * Vue [5](https://github.com/rethinkdb/horizon/tree/next/examples/vue-chat-app) - front end framework
 
-The jury is still out, but some sort of `feathers-horizon` [6](http://feathersjs.com/) may be more complete solution. Though it doesn't exist currently.
+## Purpose
+The goal of this project is to provide all the parts necessary to create a "real-time" web-app while still providing good old REST endpoints to the same data.
 
 This project is a proof of concept based on [this Horizon issue](https://github.com/rethinkdb/horizon/pull/507#issuecomment-234624156)
+
+#### There may be better ways to do this kind of thing as it is still evolving:
+
+1. A `feathers-horizon` [6](http://feathersjs.com/) might do the trick if someone writes it.
+2. Can [Redux](https://github.com/shanecav/horizon-redux) provide Horizon across multiple transports?
+
+#### This still leaves other questions like:
+
+1. Should my async tasks access the database directly through ReQL?
+2. Can I rely on change-feeds and ditch message queues?
+3. If I `dog-food` my APIs then I can never use ReQL and that stinks...
 
 ## Requirements
 
